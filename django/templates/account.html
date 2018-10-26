@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		
+		<!-- Title -->
+		<title>account</title>
+
+		<!-- Favicon -->
+		<link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+		<!-- Include CSS -->
+		<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="../static/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="../static/owl-carousel/owl.carousel.css">
+		<link rel="stylesheet" type="text/css" href="../static/owl-carousel/owl.theme.css">
+		<link rel="stylesheet" type="text/css" href="../static/owl-carousel/owl.transitions.css">
+		<link rel="stylesheet" type="text/css" href="../static/css/style.css">
+
+	</head>
+
+	<body>
+		<!-- Header container -->
+		<div class="header-bg">
+			<!-- Container -->
+			<div class="container">
+
+				<div class="row flex">
+					<!-- Logo column -->
+					<div class="col-xs-12 col-sm-5 col-md-4 flex">
+						<a href="index.html">
+							<!-- Logo -->
+							<img src="../static/images/logo.png" class="logo img-responsive" alt="PhotoMarket">
+						</a>
+					</div>
+
+					<!-- Menu column -->
+					<div class="col-xs-12 col-sm-7 col-md-8 flex flex-center">
+						<!-- Menu -->
+						<ul class="nav nav-pills">
+							<li role="presentation"><a href="#">Log out</a></li>
+							<li role="presentation"><a href="account.html">Your Account</a></li>
+						</ul>
+
+					</div>
+				</div>
+
+				<!-- Shopping cart -->
+				
+			</div>
+		</div>
+
+		<!-- Page container -->
+		<div class="inner-content-home">
+			<div class="container">
+
+				<div class="row">
+
+					<!-- Profile info -->
+					<div class="col-md-3 col-md-10 ">
+						<div class="img-profile text-center">
+							<img src="../static/images/info.jpg" class="img-responsive" alt="John Doe">
+							
+						</div>
+
+						<h4 class="title">Personal Information</h4>
+						<div class="line-dec"></div>
+
+						<ul class="list-group">
+							<li class="list-group-item"><b>User Name:</b>xxxxx</li>
+							<li class="list-group-item"><b>E-mail:</b> xxxxx</li>
+							<li class="list-group-item"><a href="#"><b>Pictures uploaded</b> <span class="badge">9</span></a></li>
+						</ul>
+
+						<a href="#" class="btn btn-block btn-success">   </a>
+                        <form>
+                            <div class="form-group">
+                                <label for="pic_upload">upload your picture</label>
+                                <input type="pic_path" class="form-control" id="pic_path" placeholder="pic_path">
+                                    </div>
+                            <div class="form-group">
+                                <label for="keyword">enter key word</label>
+                                <input type="keyword" class="form-control" id="keyword" placeholder="keyword">
+                                <label for="location">enter location</label>
+                                <input type="location" class="form-control" id="location" placeholder="location">
+                                    </div>
+                            
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+					</div>
+                  
+                    <div class="row">
+                        <div class="col-lg-3 flex">
+                            
+                            <div class="grid-item">
+                                <a href="picture.html">
+                                    <img src="../static/images/your-photos/3.jpg" class="img-responsive" alt="your-photo">
+                                        </a>
+                            </div>
+                            
+                            <div class="grid-item">
+                                <a href="picture.html">
+                                    <img src="../static/images/your-photos/3.jpg" class="img-responsive" alt="your-photo">
+                                        </a>
+                            </div>
+                            <div class="grid-item">
+                                <a href="picture.html">
+                                    <img src="../static/images/your-photos/3.jpg" class="img-responsive" alt="your-photo">
+                                        </a>
+                            </div>
+                        
+                        
+                        
+                        </div>
+                        <div class="col-lg-3  flex">
+                            <div class="grid-item">
+                                <a href="picture.html">
+                                    <img src="../static/images/your-photos/3.jpg" class="img-responsive" alt="your-photo">
+                                        </a>
+                            </div>
+                            <div class="grid-item">
+                                <a href="picture.html">
+                                    <img src="../static/images/your-photos/3.jpg" class="img-responsive" alt="your-photo">
+                                        </a>
+                            </div>
+                            <div class="grid-item">
+                                <a href="picture.html">
+                                    <img src="../static/images/your-photos/3.jpg" class="img-responsive" alt="your-photo">
+                                        </a>
+                            </div>
+                        
+                        </div>
+                        
+                        <div class="col-lg-3  flex">
+                            <div class="grid-item">
+                                <a href="picture.html">
+                                    <img src="../static/images/your-photos/3.jpg" class="img-responsive" alt="your-photo">
+                                        </a>
+                            </div>
+                            <div class="grid-item">
+                                <a href="picture.html">
+                                    <img src="../static/images/your-photos/3.jpg" class="img-responsive" alt="your-photo">
+                                        </a>
+                            </div>
+                            <div class="grid-item">
+                                <a href="picture.html">
+                                    <img src="../static/images/your-photos/3.jpg" class="img-responsive" alt="your-photo">
+                                        </a>
+                            </div>
+                            
+                        </div>
+					</div>
+                </div>
+		</div>
+        
+        
+
+		<!-- Include Scripts -->
+		<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="../static/owl-carousel/owl.carousel.min.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+		<script type="text/javascript" src="js/masonry.pkgd.min.js"></script>
+
+		<script type="text/javascript">
+
+			// Masonry grid
+			var $grid = $('.grid').masonry({
+				itemSelector: '.grid-item',
+				columnWidth: '.grid-sizer',
+				percentPosition: true,
+				transitionDuration: '0.2s',
+				stagger: 30,
+				resize: true,
+			});
+
+		</script>
+
+	</body>
+</html>
+
