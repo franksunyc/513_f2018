@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header id="site-header">
+
+  <div id="header-search-box">
+
+    <form role="search" method="get" id="searchform" action="{% url 'search' %}">
+      {% csrf_token %}
+      <input type="search" name="q" placeholder="Search" required>
+      <button type="submit"><span class="ion-ios-search-strong"></span></button>
+    </form>
+
+  </div>
+</header>
+</body>
+</html>
