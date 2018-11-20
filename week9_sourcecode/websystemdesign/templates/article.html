@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% csrf_token %}
+{% block content %}
+
+<h2>小说列表</h2>
+ {% csrf_token %}
+{% for article in article_list %}
+    nnnn
+    <h3><a href="{% url 'detail' id=article.id %}">{{ article.name }}</a></h3>
+{% endfor %}
+
+{% endblock %}
+
+</body>
+</html>
