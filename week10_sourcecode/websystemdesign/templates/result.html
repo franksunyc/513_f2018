@@ -1,0 +1,172 @@
+<!doctype html>
+
+<head>
+<!-- Title -->
+<title>Result</title>
+
+<!-- Favicon -->
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+<!-- Include CSS -->
+<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../static/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="../static/owl-carousel/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="../static/owl-carousel/owl.theme.css">
+<link rel="stylesheet" type="text/css" href="../static/owl-carousel/owl.transitions.css">
+<link rel="stylesheet" type="text/css" href="../static/css/style.css">
+
+</head>
+
+<body>
+
+<!-- Header container -->
+<div class="header-bg">
+	<!-- Container -->
+	<div class="container">
+
+		<div class="row flex">
+			<!-- Logo column -->
+			<div class="col-xs-12 col-sm-5 col-md-4 flex">
+				<a href="index.html">
+					<!-- Logo -->
+					<img src="../static/images/logo.png" class="logo img-responsive" alt="PhotoMarket">
+				</a>
+			</div>
+
+			<!-- Menu column -->
+			<div class="col-xs-12 col-sm-7 col-md-8 flex flex-center">
+				<!-- Menu -->
+				<ul class="nav nav-pills">
+
+					<li role="presentation"><a href="/index.html">Log out</a></li>
+					<li role="presentation"><a href="/account.html">Your Account</a></li>
+					<li role="presentation"><a href="/login.html"> <span>log in</span></a></li>
+				</ul>
+
+			</div>
+		</div>
+
+
+	</div>
+</div>
+
+<!-- Navbar menu -->
+<nav class="navbar navbar-default nav-top">
+	<div class="container-fluid">
+		<!-- Responsive button -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+		</div>
+	</div>
+</nav>
+
+
+		<!-- Page container -->
+		<div class="inner-content">
+			<div class="container">
+
+				<!-- Breadcrumb -->
+				<div class="row">
+					<div class="col-sm-12">
+						<ol class="breadcrumb">
+							<li>
+								<a href="/index.html">Home</a>
+							</li>
+							<li class="active">
+								Result
+							</li>
+                            <li class="active">
+								Find {{ post_list.count }} pictures
+							</li>
+
+						</ol>
+					</div>
+				</div>
+			<div class="container">
+                <!-- Description table -->
+                <div class="col-sm-9">
+                    <table class="table picture-desc">
+                        <tbody>
+                            {% for i in post_list %}
+
+                                <div class="media photo-list">
+							<!-- photo item image -->
+							        <div class="media-left">
+								        <a href="#">
+
+									    <img src="{{ MEDIA_URL }}{{ i.img_url }}" class="media-object photo-list-image" alt="List photo">
+								        </a>
+							        </div>
+							<!-- photo item body -->
+							    <div class="media-body">
+								    <div class="row">
+									<!-- Description column -->
+									    <div class="col-sm-8">
+										    <h4 class="media-heading photo-list-title">
+											{{ forloop.counter }} <span class="badge">NEW!</span>
+										    </h4>
+                                            <p>
+                                            Keyword:
+                                            {{ i.name }}
+                                            </p>
+                                            <p>
+                                            Location:
+                                            {{ i.address }} ,{{ i.city }} ,{{ i.state }},{{ i.zipcode }}
+                                            </p>
+                                            <p>
+                                            Author:
+                                            {{ i.author }}
+                                            </p>
+                                            <p>
+                                            Category:
+                                            {{ i.categories }}
+									    </div>
+
+									<!-- Price and actions -->
+									    <div class="col-sm-4">
+
+										    <a href="{{ MEDIAS_URL }}{{ i.img_url.url }}" class="btn btn-block btn-primary">View</a>
+									    </div>
+								    </div>
+                                            <div>
+                                                <tr>
+
+                                                </tr>
+                                            </div>
+                                        {% empty %}
+                                            <div class="no-post">
+                                                No item required your search, please try another one
+                                            </div>
+                                        {% endfor %}
+                            </div>
+                            </div>
+                        </tbody>
+                    </table>
+
+
+							</div>
+						</div>
+
+						<!-- separator -->
+
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+
+		<!-- Include Scripts -->
+		<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="owl-carousel/owl.carousel.min.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+
+	</body>
+</html>
+
