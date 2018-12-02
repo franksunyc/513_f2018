@@ -1,0 +1,278 @@
+<html>
+
+<head>
+<!-- Title -->
+<title>Result</title>
+
+<!-- Favicon -->
+
+<!-- Include CSS -->
+<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../static/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="../static/css/style.css">
+<style>
+
+    #map_canvas {
+    width: 100%;
+    height: 40%;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Header container -->
+<div class="header-bg">
+	<!-- Container -->
+	<div class="container">
+
+		<div class="row flex">
+			<!-- Logo column -->
+			<div class="col-xs-12 col-sm-5 col-md-4 flex">
+				<a href="index.html">
+					<!-- Logo -->
+					<img src="../static/images/logo.png" class="logo img-responsive" alt="PhotoMarket">
+				</a>
+			</div>
+
+			<!-- Menu column -->
+			<div class="col-xs-12 col-sm-7 col-md-8 flex flex-center">
+				<!-- Menu -->
+				<ul class="nav nav-pills">
+
+					<li role="presentation"><a href="/index.html">Log out</a></li>
+					<li role="presentation"><a href="/account.html">Your Account</a></li>
+					<li role="presentation"><a href="/login.html"> <span>log in</span></a></li>
+				</ul>
+
+			</div>
+		</div>
+
+
+	</div>
+</div>
+
+<!-- Navbar menu -->
+<nav class="navbar navbar-default nav-top">
+	<div class="container-fluid">
+		<!-- Responsive button -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+		</div>
+	</div>
+</nav>
+
+
+		<!-- Page container -->
+		<div class="inner-content">
+			<div class="container">
+
+				<!-- Breadcrumb -->
+				<div class="row">
+					<div class="col-sm-12">
+						<ol class="breadcrumb">
+							<li>
+								<a href="/index.html">Home</a>
+							</li>
+							<li class="active">
+								Result
+							</li>
+                            <li class="active">
+								Find {{ post_list.count }} pictures{{ total }}
+							</li>
+
+						</ol>
+					</div>
+				</div>
+            <div id="map_canvas"></div>
+			<div class="container">
+                <!-- Description table -->
+                <div class="col-sm-9">
+                    <table class="table picture-desc">
+                        <tbody>
+                            {% for i in post_list %}
+
+                                <div class="media photo-list">
+							<!-- photo item image -->
+							        <div class="media-left">
+								        <a href="#">
+
+									    <img src="{{ MEDIA_URL }}{{ i.img_url }}" class="media-object photo-list-image" alt="List photo">
+								        </a>
+							        </div>
+							<!-- photo item body -->
+							    <div class="media-body">
+								    <div class="row">
+									<!-- Description column -->
+									    <div class="col-sm-8">
+										    <h4 class="media-heading photo-list-title">
+											{{ forloop.counter }} <span class="badge">NEW!</span>
+										    </h4>
+                                            <p>
+                                            Keyword:
+                                            {{ i.name }}
+                                            </p>
+                                            <p>
+                                            Location:
+                                            {{ i.address }} ,{{ i.city }} ,{{ i.state }},{{ i.zipcode }}
+                                            </p>
+
+                                            <p>
+                                            Author:
+                                            {{ i.author }}
+                                            </p>
+                                            <p>
+                                            Category:
+                                            {{ i.categories }}
+									    </div>
+
+									<!-- Price and actions -->
+									    <div class="col-sm-4">
+
+										    <a href="{{ MEDIAS_URL }}{{ i.img_url.url }}" class="btn btn-block btn-primary">View</a>
+									    </div>
+
+                                        <div  id="{{forloop.counter }}" name="{{ i.name  }}|{{ i.address }} ,{{ i.city }} ,{{ i.state }},{{ i.zipcode }}|{{ MEDIAS_URL }}{{ i.img_url.url }}"></div>
+								    </div>
+                                            <div>
+                                                <tr>
+
+                                                </tr>
+                                            </div>
+                                        {% empty %}
+                                            <div class="no-post">
+                                                No item required your search, please try another one
+                                            </div>
+                                        {% endfor %}
+                            </div>
+                            </div>
+                        </tbody>
+                    </table>
+
+
+
+							</div>
+						</div>
+
+						<!-- separator -->
+
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+
+
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADVWWMEs3MFmpXG6TtE7iFWR_G4J0q31I&callback=initMap"></script>
+<script>
+  var locations = [];
+
+var geocoder;
+var map;
+var bounds = new google.maps.LatLngBounds();
+var comter={{ post_list.count }}
+
+
+
+
+            for(var q=1;q<comter+1; q++){
+                var x=document.getElementById(q).attributes["name"].value;
+                var x_list=x.split('|');
+
+                locations.push(x_list)
+            }
+                console.log(locations)
+
+
+
+
+
+
+
+
+
+function initialize() {
+    map = new google.maps.Map(
+    document.getElementById("map_canvas"), {
+        center: new google.maps.LatLng(37.4419, -122.1419),
+        zoom: 500,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+    geocoder = new google.maps.Geocoder();
+
+    for (i = 0; i < locations.length; i++) {
+
+
+        geocodeAddress(locations, i);
+    }
+}
+google.maps.event.addDomListener(window, "load", initialize);
+
+
+function geocodeAddress(locations, i) {
+  var title = locations[i][0];
+  var address = locations[i][1];
+  var url = locations[i][2];
+  geocoder.geocode({
+      'address': locations[i][1]
+    },
+
+    function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        var marker = new google.maps.Marker({
+          icon: 'http://maps.google.com/mapfiles/ms/icons/red.png',
+          map: map,
+          position: results[0].geometry.location,
+          title: title,
+          animation: google.maps.Animation.DROP,
+          address: address,
+          url: url
+        })
+        infoWindow(marker, map, title, address, url);
+        bounds.extend(marker.getPosition());
+        map.fitBounds(bounds);
+      } else {
+        alert("geocode of " + address + " failed:" + status);
+      }
+    });
+}
+
+function infoWindow(marker, map, title, address, url) {
+  google.maps.event.addListener(marker, 'click', function() {
+    var html = "<div><h3>" + title + "</h3><p>" + address + "<br></div><a href='" + url + "'>View Photo Detail</a></p></div>";
+    iw = new google.maps.InfoWindow({
+      content: html,
+      maxWidth: 350
+    });
+    iw.open(map, marker);
+  });
+}
+
+function createMarker(results) {
+  var marker = new google.maps.Marker({
+    icon: 'http://maps.google.com/mapfiles/ms/icons/blue.png',
+    map: map,
+    position: results[0].geometry.location,
+    title: title,
+    animation: google.maps.Animation.DROP,
+    address: address,
+    url: url
+  })
+  bounds.extend(marker.getPosition());
+  map.fitBounds(bounds);
+  infoWindow(marker, map, title, address, url);
+  return marker;
+}
+</script>
+
+	</body>
+</html>
+
