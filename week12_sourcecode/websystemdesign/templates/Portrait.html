@@ -1,0 +1,198 @@
+﻿<!doctype html>
+<html lang="en">
+    <head>
+
+<!-- Title -->
+        <title>Portrait</title>
+
+<!-- Favicon -->
+        <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+<!-- Include CSS -->
+        <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="../static/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="../static/owl-carousel/owl.carousel.css">
+        <link rel="stylesheet" type="text/css" href="../static/owl-carousel/owl.theme.css">
+        <link rel="stylesheet" type="text/css" href="../static/owl-carousel/owl.transitions.css">
+        <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <style>
+        .grid-container {
+            display: grid;
+            grid-column-gap: 50px;
+            grid-template-columns: auto auto;
+            background-color: #FFFFFF;
+            padding: 10px;
+        }
+    .grid-container > div {
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(255, 255, 255, 255.8);
+        padding: 20px;
+        font-size: 30px;
+        text-align: center;
+    }
+
+
+</style>
+    </head>
+
+    <body>
+
+<!-- Header container -->
+    <div class="header-bg">
+	    <!-- Container -->
+	    <div class="container">
+
+		    <div class="row flex">
+			<!-- Logo column -->
+			    <div class="col-xs-12 col-sm-5 col-md-4 flex">
+				    <a href="index.html">
+					<!-- Logo -->
+					    <img src="../static/images/logo.png" class="logo img-responsive" alt="PhotoMarket">
+				    </a>
+			    </div>
+
+			<!-- Menu column -->
+			    <div class="col-xs-12 col-sm-7 col-md-8 flex flex-center">
+				<!-- Menu -->
+				    <ul class="nav nav-pills">
+
+					    <li role="presentation"><a href="/index.html">Log out</a></li>
+					    <li role="presentation"><a href="/account.html">Your Account</a></li>
+					    <li role="presentation"><a href="/login.html"> <span>log in</span></a></li>
+				    </ul>
+
+			    </div>
+		    </div>
+
+
+	    </div>
+    </div>
+
+<!-- Navbar menu -->
+    <nav class="navbar navbar-default nav-top">
+	    <div class="container-fluid">
+		<!-- Responsive button -->
+		    <div class="navbar-header">
+			    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+			    </button>
+		    </div>
+	    </div>
+    </nav>
+ <div class="inner-content">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="/index.html">Home</a>
+                        </li>
+                        <li class="active">
+								Category
+
+                        </li>
+                        <li class="active">
+								portrait
+
+                        </li>
+                        <li class="active">
+								Total pictures:
+								 {{ post_list.count }}
+                        </li>
+
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="row">
+     <div class="col-sm-offset-1 col-sm-8">
+        <div class="inner-content">
+                    <div class="grid-container">
+                            {% for item in post_list %}
+                            <div>
+							<!-- photo item image -->
+                                <a href="viewimge/?p1={{item.name}}&p2={{item.img_url}}&p3={{item.author}}&p4={{item.address}}&p5={{item.categories}}">
+                                    <img src="{{ MEDIA_URL }}{{ item.img_url }}" class="media-object photo-list-image" alt="List photo" width="30%">
+                                </a>
+                            </div>
+                            {% endfor %}
+                    </div>
+            <div>
+                <nav class="text-center">
+                    <ul class="pagination">
+                        <li>
+                            <a href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li>
+                            <a href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+    </div>
+    <div  class="col-sm-3">
+        <div class="inner-content">
+					<!-- Sidebar -->
+            <div class="col-sm-1 col-md-8">
+                <div class="sidebar-item">
+                    <h4 class="title">Search</h4>
+                        <div class="line-dec"></div>
+                                <!-- Search form -->
+                        <form class="form-inline" action="search/" method="get">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <input type="search" name="q" class="form-control" placeholder="Search...">
+                            </div>
+								<button type="submit" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        </form>
+                </div>
+
+
+
+                <div class="sidebar-item">
+                    <h4 class="title">Categories</h4>
+                    <div class="line-dec"></div>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <a href="animals.html">Animals</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="architecture.html">Architecture</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="landscapes.html">Landscapes</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="food.html">Food</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="portrait.html">Portrait</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="other.html">Other</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+    </body>
+</html>

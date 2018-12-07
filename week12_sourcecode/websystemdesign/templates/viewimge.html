@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+    <head>
+
+<!-- Title -->
+        <title>ImageDetail</title>
+
+<!-- Favicon -->
+        <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+<!-- Include CSS -->
+        <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="../static/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="../static/owl-carousel/owl.carousel.css">
+        <link rel="stylesheet" type="text/css" href="../static/owl-carousel/owl.theme.css">
+        <link rel="stylesheet" type="text/css" href="../static/owl-carousel/owl.transitions.css">
+        <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <style>
+        .grid-container {
+            display: grid;
+            grid-column-gap: 50px;
+            grid-template-columns: auto auto;
+            background-color: #FFFFFF;
+            padding: 10px;
+        }
+    .grid-container > div {
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(255, 255, 255, 255.8);
+        padding: 20px;
+        font-size: 30px;
+        text-align: center;
+    }
+
+
+</style>
+    </head>
+
+    <body>
+
+<!-- Header container -->
+    <div class="header-bg">
+	    <!-- Container -->
+	    <div class="container">
+
+		    <div class="row flex">
+			<!-- Logo column -->
+			    <div class="col-xs-12 col-sm-5 col-md-4 flex">
+				    <a href="index.html">
+					<!-- Logo -->
+					    <img src="../static/images/logo.png" class="logo img-responsive" alt="PhotoMarket">
+				    </a>
+			    </div>
+
+			<!-- Menu column -->
+			    <div class="col-xs-12 col-sm-7 col-md-8 flex flex-center">
+				<!-- Menu -->
+				    <ul class="nav nav-pills">
+
+					    <li role="presentation"><a href="/index.html">Log out</a></li>
+					    <li role="presentation"><a href="/account.html">Your Account</a></li>
+					    <li role="presentation"><a href="/login.html"> <span>log in</span></a></li>
+				    </ul>
+
+			    </div>
+		    </div>
+
+
+	    </div>
+    </div>
+
+<!-- Navbar menu -->
+    <nav class="navbar navbar-default nav-top">
+	    <div class="container-fluid">
+		<!-- Responsive button -->
+		    <div class="navbar-header">
+			    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+			    </button>
+		    </div>
+	    </div>
+    </nav>
+
+
+ <div class="inner-content">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="/index.html">Home</a>
+                        </li>
+                        <li class="active">
+                            <a href="/animals.html"> {{ img_categories }} </a>
+
+                        </li>
+                        <li class="active">
+								image detail
+                        </li>
+
+
+
+
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <div class="col-sm-offset-2">
+            <a href="#">
+
+                <img src="{{ MEDIA_URL }}{{ img_url }}" width="80%">
+            </a>
+        </div>
+
+									<!-- Description column -->
+         <div class="col-sm-offset-2">
+             <h4 class="media-heading photo-list-title"></h4>
+             <p>
+                 <h4>Keyword：<span>{{ img_name }}</span></h4>
+             </p>
+             <p>
+                 <h4>Location: {{ img_address }}</h4>
+             </p>
+             <p>
+                 <h4>Author: {{ img_author }}</h4>
+
+             </p>
+             <p>
+                 <h4>Categories: {{ img_categories }}</h4>
+
+             </p>
+         </div>
+
+</body>
+</html>

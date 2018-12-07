@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .left{
+            float: left;
+        }
+        .clearfix:after{
+            content: '.';
+            clear: both;
+            display: block;
+            visibility: hidden;
+            height: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="condition">
+        <div class="item clearfix">
+            <div class="icon left" onclick="AddCondition(this);">+</div>
+            <div class="left">
+                <select onchange="ChangeName(this);">
+                    <option value="name">书名</option>
+                    <option value="book_type__caption">图书类型</option>
+                    <option value="price">价格</option>
+                    <option value="pages">页数</option>
+                </select>
+            </div>
+            <div class="left"><input type="text" name="name" /></div>
+        </div>
+    </div>
+    <div>
+        <input type="button" onclick="Search();" value="搜索" />
+    </div>
+    <div class="container"></div>
+    <script src="/static/js/jquery-1.12.4.js"></script>
+    <script>
+        function  AddCondition(ths) {
+            var new_tag = $(ths).parent().clone();//克隆
+            new_tag.find('.icon').text('-'); //更改+ 为-
+            new_tag.find('.icon').attr('onclick', 'RemoveCondition(this);'); //属性什么等于什么
+
+            $(ths).parent().parent().append(new_tag);//添加
+        }
+        function  RemoveCondition(ths) {//删除
+            $(ths).parent().remove();
+        }
+        function ChangeName(ths) {//改变名称就触发
+            var v = $(ths).val();//得到值
+            $(ths).parent().next().find('input').attr('name',v);//改变属性name的值为v
+        }
+        function Search() {
+            var post_data_dict = {};//定义一个{}
+
+            // 获取所有input的内容，提交数据
+            $('.condition input').each(function () {//循环
+                // console.log($(this)[0])
+                var n = $(this).attr('name');//得到属性值
+                var v = $(this).val();//得到val值
+                var v_list = v.split('，');//，分割
+                post_data_dict[n] = v_list;//定义一个列表
+            });
+            console.log(post_data_dict);
+            var post_data_str = JSON.stringify(post_data_dict);
+            $.ajax({
+                url: '/app03/index/',
+                type: 'POST',
+                data: { 'post_data': post_data_str},
+                dataType: 'json',
+
