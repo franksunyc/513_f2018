@@ -1,6 +1,6 @@
-When I start this project, I have no experiment with Html, so I find some source code through web. my html frame is download from www.cssmoban.com and www.mobanwang.com. By study it and modify it, I kept the basic structure of the html, then I using CSS and Javascript to modify it. Finally I complete my project. This resource code is in the project_resource_code folder.
+When I start this project, I have no experiment with Html, so I find some source code through web. my html frame is download from www.cssmoban.com and www.mobanwang.com and study and modify it, I kept the basic structure of the html, and build rewrite some html in order to reach my design.Then I am using Django to make the connection with my data base, using Javascript connect to google API. Finally I complete my project. This resource code is in the project_resource_code folder.
 
-Recourse list:
+Recourse code list:
 
 1. cpts_1335_cab from http://www.cssmoban.com/cssthemes/7998.shtml
 2. picture_disply_silde_html from http://www.mobanwang.com
